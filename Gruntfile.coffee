@@ -14,22 +14,15 @@ module.exports = (grunt) ->
         options:
           bare: true
         files: {
-          'media/js/App.min.js': ['media/js/App.js']
+          'public/js/App.min.js': ['public/js/App.js']
         }
 
-    clean: ['media/js/react']
-
-    env:
-      dev:
-        NODE_ENV: 'development'
-      build:
-        NODE_ENV: 'production'
+    clean: ['public/js/react']
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-browserify'
-  grunt.loadNpmTasks 'grunt-env'
 
   grunt.registerTask 'css', 'cssmin'
-  grunt.registerTask 'dev', ['env:dev', 'browserify']
-  grunt.registerTask 'build', ['env:build', 'browserify', 'uglify']
+  grunt.registerTask 'dev', ['browserify']
+  grunt.registerTask 'build', ['browserify', 'uglify']
