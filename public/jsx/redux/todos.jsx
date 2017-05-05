@@ -23,10 +23,12 @@ const todosReducer = function(state = initialState, action) {
     }
 };
 
-const addTodoAction = (text) => ({
+const addTodoAction = ({text, timeLimited = false, timeLimit}) => ({
     type: ADD_TODO,
     data: Immutable.fromJS({
         text,
+        timeLimited,
+        timeLimit,
         completed: false
     })
 });

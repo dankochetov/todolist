@@ -1,3 +1,39 @@
-#todolist li.completed {
+#app {
+    margin-top: 20px;
+}
+
+#todolist {
+    margin-top: 20px;
+}
+
+#todolist .todo {
+    cursor: pointer;
+}
+
+#todolist .todo.completed .todo-text {
     text-decoration: line-through;
+    color: gray;
+}
+
+#todolist .timelimit {
+    color: gray;
+    font-size: small;
+    margin-top: 20px;
+}
+
+#todolist .todo {
+    overflow-x: auto;
+}
+
+#todolist .todo .remove-button {
+    cursor: pointer;
+}
+
+#todolist .todo .todo-text {
+    display: inline;
+}
+
+#todolist .todo .completed-icon {
+    color: green;
+    margin-left: 5px;
 }
