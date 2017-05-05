@@ -13,8 +13,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from '../../TodoList.jsx';
 
-const store = createStore(mainReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(mainReducer/*,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()*/);
 
 const mapStateToProps = state => ({
     todos: state.todos.get('list')
