@@ -5,7 +5,7 @@ module.exports = (grunt) ->
     browserify:
       react:
         files: {
-          'public/js/App.js': ['public/jsx/redux/containers/App.jsx']
+          'public/js/App.js': ['public/jsx/redux/containers/TodoList.jsx']
           #'public/js/Auth.js': ['public/jsx/Auth.jsx']
         }
 
@@ -14,7 +14,7 @@ module.exports = (grunt) ->
         options:
           bare: true
         files: {
-          'public/js/App.min.js': ['public/js/App.js']
+          'public/js/App.min.js': ['public/js/TodoList.js']
         }
 
     clean: ['public/js/react']
