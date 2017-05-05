@@ -18,7 +18,7 @@ router.get('/vk/cb', passport.authenticate('vkontakte', {
 }));
 
 router.get('/fb', passport.authenticate('facebook'));
-router.get('/vk/cb', passport.authenticate('facebook', {
+router.get('/fb/cb', passport.authenticate('facebook', {
     failureRedirect: '/auth',
     successRedirect: '/'
 }));
