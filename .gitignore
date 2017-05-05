@@ -38,3 +38,7 @@ jspm_packages
 
 #WebStorm
 .idea
+
+#builded files
+public/js/App.js
+public/js/App.min.js
