@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import AddTodoForm from './AddTodoForm.jsx';
 import TodoItem from './TodoItem.jsx';
+import LogoutBox from './LogoutBox.jsx';
 
 export default class TodoList extends Component {
     constructor(props) {
@@ -17,14 +18,17 @@ export default class TodoList extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-md-6 col-md-offset-3'>
-                        <AddTodoForm
-                            addTodo={this.props.addTodo}
-                            datetimeFormat={this.datetimeFormat}/>
-                        <div id='todolist'>
-                            {this.getTodos()}
+            <div>
+                <LogoutBox/>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-md-6 col-md-offset-3'>
+                            <AddTodoForm
+                                addTodo={this.props.addTodo}
+                                datetimeFormat={this.datetimeFormat}/>
+                            <div id='todolist'>
+                                {this.getTodos()}
+                            </div>
                         </div>
                     </div>
                 </div>
