@@ -38,8 +38,8 @@ passport.use(new VkontakteStrategy({
 }));
 
 passport.use(new FacebookStrategy({
-    clientID: '480228708804223',
-    clientSecret: '3aa575d92af323a2f766e95a07762f07',
+    clientID: '444096675925208',
+    clientSecret: '3a114f200812d2ddfd5ae77b024c8c2d',
     callbackURL: '/auth/fb/cb',
     enableProof: false,
     profileFields: ['displayName']
