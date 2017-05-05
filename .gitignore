@@ -40,5 +40,5 @@ jspm_packages
 .idea
 
 #builded files
-public/js/App.js
-public/js/App.min.js
+public/js/TodoList.js
+public/js/TodoList.min.js
