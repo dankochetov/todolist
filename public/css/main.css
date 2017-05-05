@@ -25,6 +25,15 @@
     overflow-x: auto;
 }
 
+#todolist .todo.overdue {
+    color: gray;
+}
+
+#todolist .todo.overdue .timelimit {
+    font-weight: bold;
+    color: red;
+}
+
 #todolist .todo .remove-button {
     cursor: pointer;
 }
@@ -35,5 +44,10 @@
 
 #todolist .todo .completed-icon {
     color: green;
+    margin-left: 5px;
+}
+
+#todolist .todo .overdue-icon {
+    color: red;
     margin-left: 5px;
 }

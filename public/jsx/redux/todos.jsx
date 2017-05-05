@@ -29,7 +29,8 @@ const addTodoAction = ({text, timeLimited = false, timeLimit}) => ({
         text,
         timeLimited,
         timeLimit,
-        completed: false
+        completed: false,
+        overdue: false
     })
 });
 

@@ -10,7 +10,9 @@ export default class TodoList extends Component {
 
         this.state = {
             todoText: ''
-        }
+        };
+
+        this.datetimeFormat = 'MM/DD/YYYY HH:mm:ss';
     }
 
     render() {
@@ -19,7 +21,8 @@ export default class TodoList extends Component {
                 <div className='row'>
                     <div className='col-md-6 col-md-offset-3'>
                         <AddTodoForm
-                            addTodo={this.props.addTodo}/>
+                            addTodo={this.props.addTodo}
+                            datetimeFormat={this.datetimeFormat}/>
                         <div id='todolist'>
                             {this.getTodos()}
                         </div>
@@ -35,6 +38,7 @@ export default class TodoList extends Component {
             let completed = todo.get('completed');
             let timeLimited = todo.get('timeLimited');
             let timeLimit = todo.get('timeLimit');
+            let overdue = todo.get('overdue');
             return (
                 <TodoItem
                     key={i}
@@ -42,8 +46,11 @@ export default class TodoList extends Component {
                     timeLimited={timeLimited}
                     timeLimit={timeLimit}
                     completed={completed}
+                    overdue={overdue}
+                    datetimeFormat={this.datetimeFormat}
                     toggleTodo={() => this.props.toggleTodo(i)}
-                    removeTodo={() => this.props.removeTodo(i)}/>
+                    removeTodo={() => this.props.removeTodo(i)}
+                    makeOverdue={() => this.props.makeOverdue(i)}/>
             );
         });
 
@@ -55,5 +62,6 @@ TodoList.propTypes = {
     todos: PropTypes.any.isRequired,
     addTodo: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired
+    toggleTodo: PropTypes.func.isRequired,
+    makeOverdue: PropTypes.func.isRequired
 };

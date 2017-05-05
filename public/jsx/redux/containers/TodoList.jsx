@@ -18,19 +18,27 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     addTodo: text => dispatch(addTodoAction(text)),
     removeTodo: ind => dispatch(removeTodoAction(ind)),
-    toggleTodo: (state, ind) => dispatch(toggleTodoAction(state, ind))
+    toggleTodo: (state, ind) => dispatch(toggleTodoAction(state, ind)),
+    makeOverdue: (state, ind) => dispatch(makeOverdueAction(state, ind))
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({
     ...ownProps,
     ...stateProps,
     ...dispatchProps,
-    toggleTodo: (ind) => dispatchProps.toggleTodo(stateProps.todos, ind)
+    toggleTodo: ind => dispatchProps.toggleTodo(stateProps.todos, ind),
+    makeOverdue: ind => dispatchProps.makeOverdue(stateProps.todos, ind)
 });
 
-const toggleTodoAction = (state, ind, completed) => {
+const toggleTodoAction = (state, ind) => {
     let todo = state.get(ind);
     todo = todo.update('completed', d => !d);
+    return updateTodoAction(ind, todo);
+};
+
+const makeOverdueAction = (state, ind) => {
+    let todo = state.get(ind);
+    todo = todo.set('overdue', true);
     return updateTodoAction(ind, todo);
 };
 

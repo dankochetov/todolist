@@ -14,8 +14,6 @@ export default class AddTodoForm extends Component {
             timeLimit: ''
         };
 
-        this.datetimeFormat = 'MM/DD/YYYY HH:mm:ss';
-
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleAddBtnClick = this.handleAddBtnClick.bind(this);
         this.handleTimeCheckboxToggle = this.handleTimeCheckboxToggle.bind(this);
@@ -81,14 +79,14 @@ export default class AddTodoForm extends Component {
                 toolbarPlacement: 'top',
                 showClose: true,
                 showTodayButton: true,
-                format: this.datetimeFormat
+                format: this.props.datetimeFormat
             })
             .on('dp.change', ({date}) => this.handleDatetimeChange(date));
     }
 
     handleDatetimeChange(date) {
         if (date) {
-            this.setState({timeLimit: date.format(this.datetimeFormat)});
+            this.setState({timeLimit: date.format(this.props.datetimeFormat)});
         }
         else {
             this.setState({timeLimit: ''});
@@ -103,7 +101,7 @@ export default class AddTodoForm extends Component {
         let {text, timeLimited, timeLimit} = this.state;
         timeLimit = timeLimit.trim();
         text = text.trim();
-        if (!moment(timeLimit, this.datetimeFormat).isValid()) {
+        if (!moment(timeLimit, this.props.datetimeFormat).isValid()) {
             timeLimited = false;
             timeLimit = '';
         }
@@ -113,12 +111,12 @@ export default class AddTodoForm extends Component {
                 timeLimited,
                 timeLimit
             });
+            this.setState({
+                text: '',
+                timeLimit: '',
+                timeLimited: false
+            });
         }
-        this.setState({
-            text: '',
-            timeLimit: '',
-            timeLimited: false
-        });
     }
 
     handleTimeCheckboxToggle({target: {checked}}) {
@@ -127,5 +125,6 @@ export default class AddTodoForm extends Component {
 }
 
 AddTodoForm.propTypes = {
-    addTodo: PropTypes.func.isRequired
+    addTodo: PropTypes.func.isRequired,
+    datetimeFormat: PropTypes.string.isRequired
 };
