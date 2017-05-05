@@ -16,6 +16,20 @@ export default class TodoList extends Component {
         this.datetimeFormat = 'MM/DD/YYYY HH:mm:ss';
     }
 
+    componentDidMount() {
+        $.get('/api/gettodos', data => {
+            this.props.setTodos(data.todos);
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.todos !== nextProps.todos) {
+            $.post('/api/settodos', {
+                todos: nextProps.todos.toJS()
+            });
+        }
+    }
+
     render() {
         return (
             <div>
@@ -67,5 +81,6 @@ TodoList.propTypes = {
     addTodo: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
+    setTodos: PropTypes.func.isRequired,
     makeOverdue: PropTypes.func.isRequired
 };

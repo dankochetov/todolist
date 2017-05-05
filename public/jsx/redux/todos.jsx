@@ -9,6 +9,7 @@ let initialState = Immutable.fromJS({
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_TODO = 'REMOVE_TODO';
 const UPDATE_TODO = 'UPDATE_TODO';
+const SET_TODOS = 'SET_TODOS';
 
 const todosReducer = function(state = initialState, action) {
     switch (action.type) {
@@ -18,6 +19,8 @@ const todosReducer = function(state = initialState, action) {
             return state.update('list', d => d.remove(action.data));
         case UPDATE_TODO:
             return state.update('list', d => d.set(action.data.ind, action.data.value));
+        case SET_TODOS:
+            return state.set('list', action.data);
         default:
             return state;
     }
@@ -47,9 +50,15 @@ const updateTodoAction = (ind, value) => ({
     }
 });
 
+const setTodosAction = list => ({
+    type: SET_TODOS,
+    data: Immutable.fromJS(list)
+});
+
 export {
     todosReducer,
     addTodoAction,
     removeTodoAction,
-    updateTodoAction
+    updateTodoAction,
+    setTodosAction
 }

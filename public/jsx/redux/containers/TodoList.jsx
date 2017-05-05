@@ -3,7 +3,12 @@
 import {createStore} from 'redux';
 import {Provider, connect} from 'react-redux';
 import {mainReducer} from '../main.jsx';
-import {addTodoAction, removeTodoAction, updateTodoAction} from '../todos.jsx';
+import {
+    addTodoAction,
+    removeTodoAction,
+    updateTodoAction,
+    setTodosAction
+} from '../todos.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from '../../TodoList.jsx';
@@ -19,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
     addTodo: text => dispatch(addTodoAction(text)),
     removeTodo: ind => dispatch(removeTodoAction(ind)),
     toggleTodo: (state, ind) => dispatch(toggleTodoAction(state, ind)),
+    setTodos: todos => dispatch(setTodosAction(todos)),
     makeOverdue: (state, ind) => dispatch(makeOverdueAction(state, ind))
 });
 

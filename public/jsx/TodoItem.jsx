@@ -88,3 +88,7 @@ TodoItem.propTypes = {
     removeTodo: PropTypes.func.isRequired,
     makeOverdue: PropTypes.func.isRequired
 };
+
+TodoItem.defaultProps = {
+    overdue: false
+};
