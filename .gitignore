@@ -24,7 +24,7 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+dist/Release
 
 # Dependency directories
 node_modules
@@ -38,7 +38,3 @@ jspm_packages
 
 #WebStorm
 .idea
-
-#builded files
-public/js/TodoList.js
-public/js/TodoList.min.js
